@@ -1,0 +1,166 @@
+﻿<Window x:Class="CryptoStream.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="CryptoStream" 
+        Height="438" Width="563"
+        MaxHeight="438" MaxWidth="563"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="270"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Margin="5">
+                    <TextBlock Text="Source Text"
+                               TextAlignment="Center"/>
+                    <TextBox x:Name="sourceDataTxt"
+                             Margin="5"
+                             AcceptsReturn="True"
+                             Height="80"
+                             VerticalScrollBarVisibility="Auto"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1"
+                            Margin="5">
+                    <TextBlock Text="Encrypted Text"
+                               TextAlignment="Center"/>
+                    <TextBox x:Name="encryptedDataTxt"
+                             Margin="5"
+                             AcceptsReturn="True"
+                             Height="80"
+                             VerticalScrollBarVisibility="Auto"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="2"
+                            Margin="5">
+                    <TextBlock Text="Decrypted Text"
+                               TextAlignment="Center"/>
+                    <TextBox x:Name="decryptedDataTxt"
+                             Margin="5"
+                             AcceptsReturn="True"
+                             Height="80"
+                             VerticalScrollBarVisibility="Auto"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="120"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <GroupBox Margin="5" 
+                          Header="Algorithms">
+                    <StackPanel Margin="5">
+                        <RadioButton x:Name="DESCryptoServiceProvider"
+                                     Content="DESCryptoServiceProvider"
+                                     Tag="DES"
+                                     IsChecked="True"
+                                     Checked="DESCryptoServiceProvider_Checked"/>
+                        <RadioButton x:Name="RC2CryptoServiceProvider" 
+                                     Content="RC2CryptoServiceProvider"
+                                     Tag="RC2"
+                                     Checked="RC2CryptoServiceProvider_Checked"/>
+                        <RadioButton x:Name="rijndaelManagedRadioBtn"
+                                     Content="RijndaelManaged"
+                                     Tag="Rijndael"
+                                     Checked="rijndaelManagedRadioBtn_Checked"/>
+                        <RadioButton x:Name="tripleDESCryptoServiceProviderRadioBtn"
+                                     Content="TripleDESCryptoServiceProvider"
+                                     Tag="TripleDES"
+                                     Checked="tripleDESCryptoServiceProviderRadioBtn_Checked"/>
+                        <RadioButton x:Name="symmetricAlgorithmRadioBtn" 
+                                     Content="DefaultServiceProvider"
+                                     Tag="SymmetricAlgorithm"
+                                     Checked="symmetricAlgorithmRadioBtn_Checked"/>
+                    </StackPanel>
+                </GroupBox>
+
+                <GroupBox Grid.Row="1"
+                          Header="Properties"
+                          Margin="5">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <StackPanel Margin="5">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Key:"/>
+                                <TextBox x:Name="keyTxt"
+                                         Margin="5 0 0 0"
+                                         Width="180"
+                                         IsReadOnly="True"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal"
+                                        Margin="8 5 0 0">
+                                <TextBlock Text="IV:"/>
+                                <TextBox x:Name="initVectorTxt"
+                                         Margin="5 0 0 0"
+                                         Width="180"
+                                         IsReadOnly="True"/>
+                            </StackPanel>
+
+                            <StackPanel Margin="0 30 0 0">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="KeySize (bits):"/>
+                                    <TextBox x:Name="keySizeTxt"
+                                             Margin="5 0 0 0"
+                                             Width="40"
+                                             IsReadOnly="True"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal"
+                                            Margin="0 5 0 0">
+                                    <TextBlock Text="BlockSize (bits):"/>
+                                    <TextBox x:Name="blockSizeTxt"
+                                             Margin="5 0 0 0"
+                                             Width="40"
+                                             IsReadOnly="True"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal"
+                                        Margin="0 10 0 0">
+                                <TextBlock Text="LegalKeySizes:"/>
+                                <TextBox x:Name="legalKeySizesTxt"
+                                         Margin="5 0 0 0"
+                                         Width="100"
+                                         IsReadOnly="True"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal"
+                                        Margin="8 5 0 0">
+                                <TextBlock Margin="-7 0 0 0" 
+                                           Text="LegalBlockSizes:"/>
+                                <TextBox x:Name="legalBlockSizesTxt"
+                                         Margin="5 0 0 0"
+                                         Width="100"
+                                         IsReadOnly="True"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </ScrollViewer>
+                </GroupBox>
+            </Grid>
+        </Grid>
+
+        <Button x:Name="executeBtn" 
+                Grid.Row="1"
+                Width="150"
+                Height="40"
+                FontSize="18"
+                Content="Execute"
+                Click="executeBtn_Click"/>
+    </Grid>
+</Window>
